@@ -1,0 +1,51 @@
+ Name: Vinith Xavier Madanu
+
+Project Overview
+
+I completed SQL questions 1–35 using MySQL Workbench. I also created a MySQL Docker environment and imported the supplied database.
+
+1. Dockerfile saved as a text file
+
+Notepad saved my file as Dockerfile.txt. I renamed it to Dockerfile using PowerShell. I learned to select “All Files” when saving a Dockerfile in Notepad.
+
+2. Docker Desktop was not running
+
+I received a connection error while building the image because Docker Desktop was not running. I opened Docker Desktop, waited for it to start, and ran the build command again.
+
+3. Empty Dockerfile
+
+Docker showed an error saying that the Dockerfile was empty. I added the required MySQL instructions, saved the file, and built the image again. I learned that creating a file is not enough; the instructions must also be saved inside it.
+
+4. Entering commands in the wrong place
+
+I entered Dockerfile instructions such as FROM and ENV directly in PowerShell and received errors. I learned that these instructions belong inside the Dockerfile. Docker commands run in PowerShell, while SQL queries run in MySQL Workbench or the MySQL terminal.
+
+5. Database export permission errors
+
+The source account did not have some permissions needed for the export. I used mysqldump with options that avoided those permission errors. The options also skipped triggers. I then copied the exported SQL file from the container to my project folder.
+
+6. Confusion between remote and local databases
+
+The remote database and my local Docker database had different connection details. I used the source account to export the database and the local root account to import it. I created a separate Workbench connection for the Docker database using 127.0.0.1 and port 3308.
+
+I learned that the USE command selects a database on the connected server. It does not switch between remote and local servers.
+
+7. Choosing the port and storage
+
+My earlier Docker setup used port 3307, so I used port 3308 for the new setup. I named the container medical-data-db and used the volume medical_data_mysql to store the database.
+
+I learned that the volume keeps the data even if the container is removed, as long as the volume is not deleted.
+
+8. Safe Update Mode blocked Question 5
+
+While replacing NULL allergy values with 'NKA', I received Error 1175 because Safe Update Mode was enabled. The query used the allergies column in the WHERE condition instead of a key column such as patient_id.
+
+I temporarily disabled Safe Update Mode for the local connection, ran the update, and enabled it again. I also checked that no NULL allergy values remained.
+
+I learned to run Question 5 last because it changes the data needed for other allergy queries.
+
+9. Incomplete formula in Question 33
+
+The BMI formula in the assignment was incomplete. I used weight in kilograms divided by height in meters squared. I set isObese to 1 when BMI was 30 or higher and 0 otherwise.
+
+I used BMI ≥ 30 as an assumption. This threshold still needs confirmation from the trainer.
